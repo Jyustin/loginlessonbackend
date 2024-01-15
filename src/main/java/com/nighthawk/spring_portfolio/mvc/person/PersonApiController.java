@@ -43,6 +43,7 @@ public class PersonApiController {
     GET List of People
      */
     @GetMapping("/")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<List<Person>> getPeople() {
         return new ResponseEntity<>( repository.findAllByOrderByNameAsc(), HttpStatus.OK);
     }
